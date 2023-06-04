@@ -78,6 +78,5 @@ class MicroPostController extends AbstractController
                 'form' => $form,
             ]
         );
-
     }
 }
