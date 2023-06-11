@@ -3,13 +3,38 @@
 {% block title %}Post - {{ post.title }}{% endblock %}
 
 {% block body %}
-    <h3> {{ post.title }} </h3>
-    <div> {{ post.text }}</div>
-    <div style="color: grey;">
-        {% if date(post.created) < date('-1year') %}
-            Older than 1 year
-        {% else %}
-            {{ post.created|date('d/m/Y') }}
-        {% endif %}
+    <div class="mb-6 bg-sky-100 p-8 rounded-xl shadow-lg"
+            {#                     onclick="location.href='{{ path('app_micro_post_show', #}
+            {#                         {post: post.id}) }}'" #}
+    >
+        <div class="flex justify-between align-center">
+            {# title #}
+            <div class="flex items-center">
+                <div class="text-xl mr-8 text-neutral-700">
+                    {{ post.title }}
+                </div>
+                {# username #}
+                <div class="text-md text-gray-500 mr-8 flex items-center">
+                    <a href="#">user@email.com</a>
+                </div>
+            </div>
+            {# createdAt #}
+            <div class="text-gray-500 text-md">
+                {{ post.created | date('M j, Y') }}
+            </div>
+        </div>
+        {# text #}
+        <div class="mt-2 text-lg text-neutral-600">
+            {{ post.text }}
+        </div>
+        <div class="flex justify-between">
+            {# likes #}
+            <div class="mt-4 shadow-lg px-3 py-1 rounded-xl bg-sky-300 text-white cursor-pointer hover:bg-sky-400"
+                 onclick="location.href='#'"
+            >
+                Like <span class="pl-2">0</span>
+            </div>
+
+        </div>
     </div>
 {% endblock %}

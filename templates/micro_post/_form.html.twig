@@ -2,16 +2,31 @@
 <div>{{ form_errors(form) }}</div>
 
 <div>
-    {{ form_label(form.title, 'Please enter the post title') }}
+    {{ form_label(form.title, 'Please enter the post title',
+        {'label_attr': {'class': 'block text-sm text-gray-700 mb-2'}}) }}
+    {{ form_widget(form.title, {
+        'attr': {
+            'class': 'block w-full shadow-sm border-gray-300 outline-none rounded-xl border p-2 mt-1 mb-2'
+        }}) }}
+    {{ form_errors(form.title) }}
 </div>
+
 <div>
-    {{ form_widget(form.title, {attr: {'style' : 'outline: none'}}) }}
+    {{ form_label(form.text, 'Please enter the post body',
+        {'label_attr': {'class': 'block text-sm text-gray-700 mb-2'}}) }}
+    {{ form_widget(form.text, {
+        'attr': {
+            'class': 'block w-full shadow-sm border-gray-300 outline-none rounded-xl border p-2 mt-1 mb-2',
+            'rows': '4',
+        }}) }}
+    {{ form_errors(form.text) }}
 </div>
-<div>
-    {{ form_label(form.text, 'Please enter the post text') }}
-</div>
-<div>
-    {{ form_widget((form.text)) }}
+
+<div class="flex justify-center">
+    <button type="submit"
+            class="block w-1/2 shadow-sm border-transparent border bg-sky-300 hover:bg-sky-400 text-white rounded-xl mt-8 mb-2 p-2">
+        Save!
+    </button>
 </div>
 
 
